@@ -4,23 +4,34 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from ..config import DEVICE, LANG_LABELS, LLM_NAME
 from .retrieval import retrieve
 
-print(f"Chargement du LLM : {LLM_NAME}")
-tokenizer = AutoTokenizer.from_pretrained(LLM_NAME)
+tokenizer = None
+llm = None
 
-if DEVICE == "cuda":
-    llm = AutoModelForCausalLM.from_pretrained(
-        LLM_NAME,
-        torch_dtype=torch.float16,
-        device_map="auto",
-    )
-else:
-    llm = AutoModelForCausalLM.from_pretrained(
-        LLM_NAME,
-        torch_dtype=torch.float32,
-    ).to(DEVICE)
 
-llm.eval()
-print(f"LLM pret sur {DEVICE}")
+def _get_llm():
+    global tokenizer, llm
+    if tokenizer is not None and llm is not None:
+        return tokenizer, llm
+
+    print(f"Chargement du LLM : {LLM_NAME}")
+    tokenizer = AutoTokenizer.from_pretrained(LLM_NAME)
+
+    if DEVICE == "cuda":
+        llm = AutoModelForCausalLM.from_pretrained(
+            LLM_NAME,
+            torch_dtype=torch.float16,
+            device_map="auto",
+        )
+    else:
+        llm = AutoModelForCausalLM.from_pretrained(
+            LLM_NAME,
+            torch_dtype=torch.float32,
+            low_cpu_mem_usage=True,
+        ).to(DEVICE)
+
+    llm.eval()
+    print(f"LLM pret sur {DEVICE}")
+    return tokenizer, llm
 
 
 def build_prompt(question: str, retrieved_chunks: list[tuple[float, dict]], target_lang_label: str):
@@ -64,6 +75,8 @@ def generate_response(
             "answer": f"(Aucune information trouvée en {lang_label})",
             "sources": [],
         }
+
+    tokenizer, llm = _get_llm()
 
     messages = build_prompt(question, retrieved, lang_label)
     prompt_text = tokenizer.apply_chat_template(

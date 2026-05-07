@@ -1,5 +1,4 @@
-from ..config import LANG_LABELS
-from .llm import generate_response
+from ..config import LANG_LABELS, USE_LLM
 from .retrieval import retrieve
 
 
@@ -59,8 +58,11 @@ def generate_response_retrieval_only(
 def generate_response_hybrid(question: str, target_lang: str = "ha", k: int = 2) -> dict:
     """
     HA/FF : retrieval-only pour éviter les hallucinations linguistiques.
-    FR/EN : RAG + LLM.
+    FR/EN : RAG + LLM si USE_LLM=true, sinon retrieval-only.
     """
-    if target_lang in ["ha", "ff"]:
+    if target_lang in ["ha", "ff"] or not USE_LLM:
         return generate_response_retrieval_only(question, target_lang, k=max(k, 4))
+
+    from .llm import generate_response
+
     return generate_response(question, target_lang, k=k)

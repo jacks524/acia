@@ -20,6 +20,7 @@ LLM_NAME = os.getenv("LLM_NAME", "Qwen/Qwen2.5-3B-Instruct")
 ASR_MODEL_NAME = os.getenv("ASR_MODEL_NAME", "facebook/mms-1b-all")
 
 DEVICE = os.getenv("DEVICE", "cpu")
+USE_LLM = os.getenv("USE_LLM", "false").lower() in {"1", "true", "yes", "on"}
 
 CORS_ORIGINS = [
     origin.strip()

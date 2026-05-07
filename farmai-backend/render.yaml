@@ -7,5 +7,7 @@ services:
     envVars:
       - key: DEVICE
         value: cpu
+      - key: USE_LLM
+        value: "false"
       - key: CORS_ORIGINS
         value: "*"
