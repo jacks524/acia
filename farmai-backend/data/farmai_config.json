@@ -1,0 +1,14 @@
+{
+  "encoder_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "llm_name": "Qwen/Qwen2.5-3B-Instruct",
+  "n_chunks": 40,
+  "chunk_languages": [
+    "fr",
+    "ha",
+    "ff",
+    "en"
+  ],
+  "embedding_dim": 384,
+  "index_path": "/kaggle/working/faiss_index/farmai.index",
+  "meta_path": "/kaggle/working/faiss_index/chunks_meta.json"
+}

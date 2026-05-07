@@ -1,0 +1,282 @@
+[
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "01",
+    "title": "Bacterial Spot — Cutar Bakteriya",
+    "text": "Bacterial Spot — Cutar Bakteriya. Tumatur dinka na da cutar bakteriya. Bakar tabo suna bayyana a jikin ganye. Cire ganyen da suka kamu. Fesa maganin jan ƙarfe. Ka guji yawan danshi."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "02",
+    "title": "Early Blight — Alternariose",
+    "text": "Early Blight — Alternariose. Shukar ka tana da alternariose. Ganyen suna zama rawaya kuma suna bushewa. Yanke ganyen da suka lalace. Yi amfani da fungicide. Ka rika shayarwa a kasa kawai."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "03",
+    "title": "Healthy Plant — Shuka mai lafiya",
+    "text": "Healthy Plant — Shuka mai lafiya. Shukar ka tana cikin lafiya. Ci gaba da shayarwa yadda ya dace. Ka tsaftace gonar ka. Duba ganyen kullum."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "04",
+    "title": "Late Blight — Mildiou tardif",
+    "text": "Late Blight — Mildiou tardif. Tumatur dinka na da mildiou tardif. Tabo masu duhu suna bayyana da sauri. Cire ganyen da suka kamu nan da nan. Fesa maganin jan ƙarfe. Kada ruwa ya taba ganye."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "05",
+    "title": "Leaf Mold — Moisissure a kan ganye",
+    "text": "Leaf Mold — Moisissure a kan ganye. Akwai moisissure a kan ganyen shukar ka. Iska ba ta shiga sosai a gonar. Ka rage danshi. Ka bar sarari tsakanin shuke-shuke."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "06",
+    "title": "Septoria Leaf Spot — Septoriose",
+    "text": "Septoria Leaf Spot — Septoriose. Shukar ka tana da septoriose. Akwai ƙananan tabo a kan ganye. Cire ganyen da suka lalace. Yi amfani da fungicide. Ka tsaftace gonar."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "07",
+    "title": "Spider Mites — Ƙananan kwari",
+    "text": "Spider Mites — Ƙananan kwari. Ƙananan kwari suna cin shukar ka. Ganyen suna bushewa. Yi amfani da ruwan sabulu ko neem. Ka duba ganyen akai-akai."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "08",
+    "title": "Target Spot — Tabo masu zagaye",
+    "text": "Target Spot — Tabo masu zagaye. Tumatur dinka na da tabo masu zagaye. Cutar tana yaduwa da sauri. Yi amfani da fungicide. Ka tsaftace gonar kuma ka rage danshi."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "09",
+    "title": "Tomato Mosaic Virus — Virus mosaïque",
+    "text": "Tomato Mosaic Virus — Virus mosaïque. Shukar ka tana da virus mosaïque. Launin ganye yana canzawa. Cire shukar da ta kamu nan da nan. Ka tsaftace kayan aikin gona."
+  },
+  {
+    "lang": "ha",
+    "lang_label": "Hausa",
+    "disease_id": "10",
+    "title": "Yellow Leaf Curl Virus — Lanƙwashewar ganye",
+    "text": "Yellow Leaf Curl Virus — Lanƙwashewar ganye. Ganyen tumatur suna lanƙwashewa. Shukar tana zama mai rauni. Kashe ƙananan kwari farare. Cire shuke-shuken da suka kamu."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "01",
+    "title": "Bacterial Spot — Nyawu Bakteriya",
+    "text": "Bacterial Spot — Nyawu Bakteriya. Tomati maa woodi nyawu bakteriya. Tobbe balɗe ena nandi e dow haako. Ittu haakooji ɗi njamɗi. Fesde magani jan ƙarfe. Wotu ndiyam ɗuɗɗam."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "02",
+    "title": "Early Blight — Alternariose",
+    "text": "Early Blight — Alternariose. Aawdi maa woodi alternariose. Haakooji ena ngarta yellow e yoɓɓude. Seytu haakooji ɗi njamɗi. Huutoro fungicide. Ndu ndiyam tan e ley."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "03",
+    "title": "Healthy Plant — Aawdi jam",
+    "text": "Healthy Plant — Aawdi jam. Aawdi maa ena jam. Jokku ndiyam no feewi. Moƴƴin ngesa maa. Raɓɓito haakooji kala nyalaande."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "04",
+    "title": "Late Blight — Mildiou tardif",
+    "text": "Late Blight — Mildiou tardif. Tomati maa woodi mildiou tardif. Tobbe ɓalɗe ena nandi law. Ittu haakooji ɗi njamɗi law. Fesde magani jan ƙarfe. Hoto ndiyam e dow haako."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "05",
+    "title": "Leaf Mold — Moisissure e haako",
+    "text": "Leaf Mold — Moisissure e haako. Moisissure ena e dow haakooji. Henndu wartataani no feewi e ngesa. Ustu ndiyam ɗuɗɗam. Waɗtu boowal hakkunde aawdiiji."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "06",
+    "title": "Septoria Leaf Spot — Septoriose",
+    "text": "Septoria Leaf Spot — Septoriose. Aawdi maa woodi septoriose. Tobbe pamare ena e dow haako. Ittu haakooji ɗi njamɗi. Huutoro fungicide. Moƴƴin ngesa."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "07",
+    "title": "Spider Mites — Kwiiɗi pamari",
+    "text": "Spider Mites — Kwiiɗi pamari. Kwiiɗi pamari ena nyaama aawdi maa. Haakooji ena yoɓɓude. Huutoro ndiyam sabunu walla neem. Raɓɓito haakooji law."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "08",
+    "title": "Target Spot — Tobbe rond",
+    "text": "Target Spot — Tobbe rond. Tomati maa woodi tobbe rond. Nyawu ndin ena sankita law. Huutoro fungicide. Moƴƴin ngesa e ustu ndiyam."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "09",
+    "title": "Tomato Mosaic Virus — Virus mosaïque",
+    "text": "Tomato Mosaic Virus — Virus mosaïque. Aawdi maa woodi virus mosaïque. Noone haako ena waylitde. Ittu aawdi ndin njamɗi law. Lootu kuutorɗe ngesa."
+  },
+  {
+    "lang": "ff",
+    "lang_label": "Fulfulde",
+    "disease_id": "10",
+    "title": "Yellow Leaf Curl Virus — Nyiddugol haako",
+    "text": "Yellow Leaf Curl Virus — Nyiddugol haako. Haakooji tomati ena nyiddude. Aawdi ndin ena tampude. Waru kwiiɗi daneeji. Ittu aawdiiji ɗi njamɗi."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "01",
+    "title": "Tache bactérienne (Bacterial Spot)",
+    "text": "Tache bactérienne (Bacterial Spot). Votre tomate a des petites taches noires sur les feuilles, c'est la tache bactérienne. Cette maladie vient de l'eau qui reste trop longtemps sur les feuilles. Enlevez toutes les feuilles qui ont des taches et brûlez-les loin du champ. Arrosez vos plants le matin pour que les feuilles sèchent avant la nuit. Pulvérisez du cuivre sur vos plants, cela va arrêter la maladie. Ne travaillez pas dans votre champ quand les plantes sont mouillées. Espacez bien vos plants pour que l'air circule entre eux. L'année prochaine, ne plantez pas de tomates au même endroit. Achetez des semences résistantes à cette maladie chez un bon vendeur. Si vous agissez vite, votre récolte peut encore être sauvée."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "02",
+    "title": "Alternariose précoce (Early Blight)",
+    "text": "Alternariose précoce (Early Blight). Votre tomate a des taches brunes avec des cercles comme une cible, c'est l'alternariose. Cette maladie attaque surtout les vieilles feuilles du bas de la plante. Coupez et brûlez toutes les feuilles du bas qui montrent ces taches. Pulvérisez un fongicide à base de mancozèbe sur toutes vos plantes. Arrosez au pied de la plante, pas sur les feuilles. Mettez de la paille ou des feuilles sèches au sol pour éviter les éclaboussures. Cette maladie aime la chaleur et l'humidité, gardez votre champ propre. Nourrissez bien vos plants avec du compost pour les rendre plus forts. Faites la rotation des cultures, changez de place chaque année. Traitez dès les premiers signes, attendez pas que toute la plante soit touchée."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "03",
+    "title": "Plante saine (Healthy)",
+    "text": "Plante saine (Healthy). Votre tomate est en bonne santé, continuez vos bons soins. Continuez à arroser régulièrement le matin pour garder vos plants en forme. Continuez à enlever les mauvaises herbes autour de vos plants. Mettez du compost autour de vos plants pour les nourrir. Surveillez vos feuilles chaque semaine pour attraper les maladies tôt. Continuez à espacer vos plants pour que l'air circule bien. Quand les tomates commencent à pousser, attachez les tiges à des piquets. Enlevez les petites pousses inutiles entre les branches principales. Votre récolte sera bonne si vous continuez comme ça. Partagez vos bonnes pratiques avec vos voisins du village."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "04",
+    "title": "Mildiou tardif (Late Blight)",
+    "text": "Mildiou tardif (Late Blight). Votre tomate a des taches brunes qui s'étendent vite, c'est le mildiou tardif. C'est une maladie très dangereuse qui peut détruire tout votre champ en quelques jours. Enlevez et brûlez immédiatement toutes les parties touchées. Pulvérisez un fongicide au cuivre sur toutes les plantes sans attendre. Cette maladie aime la pluie et le froid, soyez vigilant en saison des pluies. Couvrez vos plants avec une bâche pendant les grandes pluies si vous le pouvez. Prévenez vos voisins car cette maladie peut se propager rapidement. Arrosez toujours au pied, jamais sur les feuilles. Détruisez les restes de plantes malades, ne les laissez pas dans le champ. L'année prochaine, traitez en prévention avant que la maladie n'arrive."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "05",
+    "title": "Moisissure des feuilles (Leaf Mold)",
+    "text": "Moisissure des feuilles (Leaf Mold). Vos feuilles ont des taches jaunes dessus et une moisissure grise dessous, c'est la moisissure foliaire. Cette maladie vient d'un manque d'air et d'une humidité trop élevée. Enlevez toutes les feuilles touchées et jetez-les loin du champ. Espacez bien vos plants pour laisser entrer l'air et la lumière. Réduisez l'arrosage et arrosez uniquement le matin. Si vous avez une serre, ouvrez-la pour faire circuler l'air. Pulvérisez un fongicide adapté sur le dessous des feuilles. Nettoyez bien vos outils après avoir travaillé dans les plants malades. Évitez de travailler dans le champ quand les feuilles sont encore mouillées. Avec un bon espacement et moins d'humidité, cette maladie disparaît vite."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "06",
+    "title": "Septoriose (Septoria Leaf Spot)",
+    "text": "Septoriose (Septoria Leaf Spot). Vos feuilles ont de petites taches rondes avec un centre gris et un bord brun, c'est la septoriose. Cette maladie commence toujours par les feuilles du bas et monte doucement. Enlevez toutes les feuilles touchées dès que vous les voyez. Pulvérisez un fongicide contenant du mancozèbe ou du cuivre. Mettez de la paille au sol pour éviter que la pluie éclabousse la terre sur les feuilles. Arrosez toujours au pied de la plante, jamais par-dessus. Nettoyez bien votre champ après la récolte, brûlez tous les restes. Ne plantez pas de tomates deux années de suite au même endroit. Achetez des plants résistants à cette maladie si vous le pouvez. Un traitement préventif au début de la saison peut éviter cette maladie."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "07",
+    "title": "Acariens à deux points (Spider Mites)",
+    "text": "Acariens à deux points (Spider Mites). Vos feuilles jaunissent et vous voyez de petites toiles fines, ce sont les acariens. Ces petites bêtes sont invisibles à l'œil nu mais très dangereuses pour vos tomates. La chaleur et la sécheresse favorisent leur développement dans votre champ. Arrosez bien vos plants, les acariens n'aiment pas l'humidité. Pulvérisez de l'eau savonneuse sur les feuilles, dessus et dessous. Vous pouvez aussi utiliser de l'huile de neem diluée dans de l'eau. Enlevez les feuilles très touchées et brûlez-les loin du champ. Évitez de trop utiliser les pesticides chimiques qui tuent les ennemis naturels des acariens. Arrosez régulièrement et ne laissez pas votre sol se dessécher. En cas de forte attaque, consultez votre agent agricole pour un traitement adapté."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "08",
+    "title": "Tache cible (Target Spot)",
+    "text": "Tache cible (Target Spot). Vos feuilles ont des taches brunes avec des cercles concentriques, c'est la tache cible. Cette maladie touche les feuilles, les tiges et même les fruits de vos tomates. Enlevez et brûlez toutes les parties touchées dès que possible. Pulvérisez un fongicide à base de chlorothalonil ou de mancozèbe. Espacez vos plants pour améliorer la circulation de l'air dans le champ. Arrosez le matin pour que les feuilles sèchent dans la journée. Évitez les excès d'eau et d'engrais azoté qui affaiblissent la plante. Nettoyez bien votre champ en fin de saison, ne laissez rien pourrir sur place. Faites la rotation des cultures pour casser le cycle de la maladie. Traitez dès les premiers signes, la maladie est plus facile à stopper au début."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "09",
+    "title": "Virus de la mosaïque (Tomato Mosaic Virus)",
+    "text": "Virus de la mosaïque (Tomato Mosaic Virus). Vos feuilles ont des taches jaune-vert irrégulières et sont déformées, c'est le virus de la mosaïque. Ce virus n'a pas de traitement, il faut surtout éviter qu'il se propage. Arrachez et brûlez immédiatement toutes les plantes malades. Lavez-vous bien les mains avant de toucher vos plants sains. Désinfectez vos outils avec de l'eau de javel avant de passer d'un plant à l'autre. Ce virus se transmet par les mains, les outils et les insectes. Achetez des semences certifiées résistantes à ce virus. Luttez contre les pucerons qui transportent ce virus d'une plante à l'autre. Ne fumez pas dans votre champ car le tabac peut transporter ce virus. Nettoyez bien votre champ après la récolte pour éviter que le virus reste dans le sol."
+  },
+  {
+    "lang": "fr",
+    "lang_label": "Français",
+    "disease_id": "10",
+    "title": "Virus de l'enroulement jaune (Yellow Leaf Curl Virus)",
+    "text": "Virus de l'enroulement jaune (Yellow Leaf Curl Virus). Vos feuilles sont jaunes et enroulées vers le haut, c'est le virus de l'enroulement jaune. Ce virus est transporté par de petits insectes blancs appelés mouches blanches ou aleurodes. Il n'existe pas de traitement contre ce virus, il faut arracher les plants malades. Arrachez et brûlez toutes les plantes qui montrent ces symptômes. Luttez contre les mouches blanches avec des filets ou des pièges jaunes collants. Pulvérisez un insecticide adapté pour tuer les mouches blanches sur vos plants sains. Achetez des plants ou des semences résistants à ce virus chez un vendeur sérieux. Couvrez vos jeunes plants avec un filet anti-insectes pendant les premières semaines. Nettoyez les mauvaises herbes autour du champ car elles abritent les mouches blanches. Discutez avec votre voisin pour lutter ensemble contre ce virus dans tout le village."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "01",
+    "title": "Bacterial Spot (Bacterial Spot)",
+    "text": "Bacterial Spot (Bacterial Spot). Your tomato has small black spots on the leaves, this is bacterial spot. This disease comes from water that stays too long on the leaves. Remove all the leaves with spots and burn them far from the field. Water your plants in the morning so the leaves dry before night. Spray copper on your plants, this will stop the disease. Do not work in your field when the plants are wet. Space your plants well so air can circulate between them. Next year, do not plant tomatoes in the same place. Buy seeds resistant to this disease from a good supplier. If you act quickly, your harvest can still be saved."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "02",
+    "title": "Early Blight (Early Blight)",
+    "text": "Early Blight (Early Blight). Your tomato has brown spots with rings like a target, this is early blight. This disease attacks mainly the older leaves at the bottom of the plant. Cut and burn all the lower leaves that show these spots. Spray a fungicide based on mancozeb on all your plants. Water at the base of the plant, not on the leaves. Put straw or dry leaves on the ground to avoid splashing. This disease likes heat and humidity, keep your field clean. Feed your plants well with compost to make them stronger. Do crop rotation, change the location each year. Treat at the first signs, do not wait until the whole plant is affected."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "03",
+    "title": "Healthy Plant (Healthy)",
+    "text": "Healthy Plant (Healthy). Your tomato is in good health, continue your good care. Continue to water regularly in the morning to keep your plants healthy. Continue to remove weeds around your plants. Put compost around your plants to feed them. Check your leaves every week to catch diseases early. Continue to space your plants so air circulates well. When the tomatoes start growing, tie the stems to stakes. Remove the small useless shoots between the main branches. Your harvest will be good if you continue like this. Share your good practices with your neighbors in the village."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "04",
+    "title": "Late Blight (Late Blight)",
+    "text": "Late Blight (Late Blight). Your tomato has brown spots that spread quickly, this is late blight. It is a very dangerous disease that can destroy your whole field in a few days. Remove and burn immediately all the affected parts. Spray a copper-based fungicide on all the plants without delay. This disease likes rain and cold, be vigilant during the rainy season. Cover your plants with a tarpaulin during heavy rains if you can. Warn your neighbors because this disease can spread quickly. Always water at the base, never on the leaves. Destroy diseased plant remains, do not leave them in the field. Next year, treat preventively before the disease arrives."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "05",
+    "title": "Leaf Mold (Leaf Mold)",
+    "text": "Leaf Mold (Leaf Mold). Your leaves have yellow spots on top and gray mold underneath, this is leaf mold. This disease comes from a lack of air and high humidity. Remove all affected leaves and throw them far from the field. Space your plants well to let in air and light. Reduce watering and water only in the morning. If you have a greenhouse, open it to circulate the air. Spray a suitable fungicide on the underside of the leaves. Clean your tools well after working with diseased plants. Avoid working in the field when the leaves are still wet. With good spacing and less humidity, this disease disappears quickly."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "06",
+    "title": "Septoria Leaf Spot (Septoria Leaf Spot)",
+    "text": "Septoria Leaf Spot (Septoria Leaf Spot). Your leaves have small round spots with a gray center and brown edge, this is septoria. This disease always starts from the lower leaves and slowly moves up. Remove all affected leaves as soon as you see them. Spray a fungicide containing mancozeb or copper. Put straw on the ground to prevent rain from splashing soil onto the leaves. Always water at the base of the plant, never from above. Clean your field well after harvest, burn all remains. Do not plant tomatoes two years in a row in the same place. Buy plants resistant to this disease if you can. A preventive treatment at the start of the season can prevent this disease."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "07",
+    "title": "Two-Spotted Spider Mites (Spider Mites)",
+    "text": "Two-Spotted Spider Mites (Spider Mites). Your leaves are turning yellow and you see fine webs, these are spider mites. These tiny creatures are invisible to the naked eye but very dangerous for your tomatoes. Heat and drought favor their development in your field. Water your plants well, spider mites do not like humidity. Spray soapy water on the leaves, top and bottom. You can also use neem oil diluted in water. Remove heavily affected leaves and burn them far from the field. Avoid overusing chemical pesticides which kill the natural enemies of mites. Water regularly and do not let your soil dry out. In case of a strong attack, consult your agricultural agent for a suitable treatment."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "08",
+    "title": "Target Spot (Target Spot)",
+    "text": "Target Spot (Target Spot). Your leaves have brown spots with concentric rings, this is target spot. This disease affects the leaves, stems and even the fruits of your tomatoes. Remove and burn all affected parts as soon as possible. Spray a fungicide based on chlorothalonil or mancozeb. Space your plants to improve air circulation in the field. Water in the morning so the leaves dry during the day. Avoid excess water and nitrogen fertilizer which weaken the plant. Clean your field well at the end of the season, do not leave anything to rot. Do crop rotation to break the disease cycle. Treat at the first signs, the disease is easier to stop at the start."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "09",
+    "title": "Mosaic Virus (Tomato Mosaic Virus)",
+    "text": "Mosaic Virus (Tomato Mosaic Virus). Your leaves have irregular yellow-green spots and are deformed, this is the mosaic virus. This virus has no treatment, the main thing is to prevent it from spreading. Pull out and burn immediately all diseased plants. Wash your hands well before touching your healthy plants. Disinfect your tools with bleach water before going from one plant to another. This virus is transmitted by hands, tools and insects. Buy certified seeds resistant to this virus. Fight against aphids which carry this virus from one plant to another. Do not smoke in your field because tobacco can carry this virus. Clean your field well after harvest to prevent the virus from staying in the soil."
+  },
+  {
+    "lang": "en",
+    "lang_label": "English",
+    "disease_id": "10",
+    "title": "Yellow Leaf Curl Virus (Yellow Leaf Curl Virus)",
+    "text": "Yellow Leaf Curl Virus (Yellow Leaf Curl Virus). Your leaves are yellow and curled upwards, this is the yellow leaf curl virus. This virus is carried by small white insects called whiteflies. There is no treatment against this virus, you must pull out diseased plants. Pull out and burn all plants showing these symptoms. Fight whiteflies with nets or yellow sticky traps. Spray a suitable insecticide to kill whiteflies on your healthy plants. Buy plants or seeds resistant to this virus from a serious supplier. Cover your young plants with an insect-proof net during the first weeks. Clean the weeds around the field because they shelter whiteflies. Talk with your neighbors to fight together against this virus throughout the village."
+  }
+]

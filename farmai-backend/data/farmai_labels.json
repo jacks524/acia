@@ -1,0 +1,19 @@
+{
+  "class_names": [
+    "Bacterial_spot",
+    "Early_blight",
+    "healthy",
+    "Late_blight",
+    "Leaf_Mold",
+    "Septoria_leaf_spot",
+    "Spider_mites",
+    "Target_Spot",
+    "Tomato_mosaic_virus",
+    "YellowLeaf_Curl_Virus"
+  ],
+  "num_classes": 10,
+  "img_size": 224,
+  "model": "EfficientNetB0",
+  "quantization": "INT8",
+  "test_accuracy": 0.9659892320632935
+}

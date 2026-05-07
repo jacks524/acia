@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: farmai-backend
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: DEVICE
+        value: cpu
+      - key: CORS_ORIGINS
+        value: "*"
