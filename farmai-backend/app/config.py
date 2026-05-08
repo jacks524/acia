@@ -28,6 +28,12 @@ USE_CLIP_VALIDATOR = os.getenv("USE_CLIP_VALIDATOR", "true").lower() in {
     "yes",
     "on",
 }
+CLIP_ALWAYS_VALIDATE = os.getenv("CLIP_ALWAYS_VALIDATE", "true").lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
 CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.65"))
 ENTROPY_THRESHOLD = float(os.getenv("ENTROPY_THRESHOLD", "0.55"))
 

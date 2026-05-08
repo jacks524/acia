@@ -34,6 +34,7 @@ Sur Railway ou Render CPU, garde le LLM désactivé pour éviter le crash mémoi
 DEVICE=cpu
 USE_LLM=false
 USE_CLIP_VALIDATOR=true
+CLIP_ALWAYS_VALIDATE=true
 CONFIDENCE_THRESHOLD=0.65
 ENTROPY_THRESHOLD=0.55
 ENCODER_NAME=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
@@ -81,7 +82,7 @@ Impact du calibrage :
 - seuil d'entropie trop haut : accepte des prédictions trop incertaines
 - seuil d'entropie trop bas : rejette des feuilles valides si le modèle hésite
 
-Niveau 2 : si le niveau 1 échoue, le backend utilise CLIP (`openai/clip-vit-base-patch32`) pour vérifier si l'image ressemble à une feuille/plante. Si CLIP répond non, l'API retourne HTTP `422` avec :
+Niveau 2 : le backend utilise CLIP (`openai/clip-vit-base-patch32`) pour vérifier si l'image ressemble à une feuille/plante. Par défaut, `CLIP_ALWAYS_VALIDATE=true` force cette vérification même quand le TFLite est confiant, parce qu'un classifieur fermé peut donner une forte confiance sur une image hors-sujet. Si CLIP répond non, l'API retourne HTTP `422` avec :
 
 ```json
 {
@@ -100,6 +101,12 @@ CLIP peut être désactivé avec :
 
 ```env
 USE_CLIP_VALIDATOR=false
+```
+
+Pour utiliser CLIP seulement en backup quand le niveau 1 échoue :
+
+```env
+CLIP_ALWAYS_VALIDATE=false
 ```
 
 ## Lancement local

@@ -1,6 +1,6 @@
 import logging
 
-from .config import DISEASE_KEYWORDS
+from .config import CLIP_ALWAYS_VALIDATE, DISEASE_KEYWORDS, USE_CLIP_VALIDATOR
 from .core.asr import transcribe_audio
 from .core.clip_validator import is_plant_leaf
 from .core.hybrid import generate_response_hybrid
@@ -61,8 +61,9 @@ def farmai_assistant(
     if image_path:
         disease, _confidence, probs = detect_disease_from_image(image_path)
         metrics = get_image_reliability_metrics(probs)
+        level_1_valid = is_valid_leaf_image(probs)
 
-        if not is_valid_leaf_image(probs):
+        if USE_CLIP_VALIDATOR and (CLIP_ALWAYS_VALIDATE or not level_1_valid):
             clip_check = is_plant_leaf(image_path)
             if not clip_check:
                 logger.info(
@@ -75,6 +76,17 @@ def farmai_assistant(
                     max_confidence=metrics["max_confidence"],
                     entropy=metrics["entropy"],
                 )
+        elif not level_1_valid:
+            logger.info(
+                "Image rejected: max_conf=%.2f, entropy=%.2f, CLIP_check=%s",
+                metrics["max_confidence"],
+                metrics["entropy"],
+                False,
+            )
+            raise ImageNotRecognizedError(
+                max_confidence=metrics["max_confidence"],
+                entropy=metrics["entropy"],
+            )
 
         output["detected_disease"] = disease
         keyword = DISEASE_KEYWORDS.get(disease, disease)

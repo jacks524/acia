@@ -26,10 +26,7 @@ def test_tomato_leaf_passes_validation(monkeypatch, tmp_path):
         "app.pipeline.detect_disease_from_image",
         lambda path: ("Tomato___Late_blight", 0.92, probs),
     )
-    monkeypatch.setattr(
-        "app.pipeline.is_plant_leaf",
-        lambda path: pytest.fail("CLIP backup should not run for a confident leaf"),
-    )
+    monkeypatch.setattr("app.pipeline.is_plant_leaf", lambda path: True)
 
     result = farmai_assistant(
         image_path=str(image_path),
@@ -39,6 +36,29 @@ def test_tomato_leaf_passes_validation(monkeypatch, tmp_path):
 
     assert result["detected_disease"] == "Tomato___Late_blight"
     assert result["answer_text"] == "Conseil test"
+
+
+def test_confident_non_leaf_rejected_by_always_on_clip(monkeypatch, tmp_path):
+    _patch_common(monkeypatch)
+    image_path = tmp_path / "document.jpg"
+    image_path.write_bytes(b"fake image")
+
+    probs = [0.01, 0.01, 0.94, 0.01, 0.01, 0.0, 0.0, 0.0, 0.01, 0.01]
+    monkeypatch.setattr(
+        "app.pipeline.detect_disease_from_image",
+        lambda path: ("Tomato___healthy", 0.94, probs),
+    )
+    monkeypatch.setattr("app.pipeline.is_plant_leaf", lambda path: False)
+
+    with pytest.raises(ImageNotRecognizedError) as exc:
+        farmai_assistant(
+            image_path=str(image_path),
+            target_lang="fr",
+            return_audio=False,
+        )
+
+    assert exc.value.payload["error"] == "image_not_recognized"
+    assert exc.value.payload["max_confidence"] == pytest.approx(0.94)
 
 
 def test_unrelated_image_rejected_after_level_1_and_clip(monkeypatch, tmp_path):
