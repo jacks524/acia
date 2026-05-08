@@ -10,6 +10,7 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from .config import AUDIO_OUTPUT_DIR, CORS_ORIGINS
+from .core.asr import AudioTranscriptionError
 from .core.clip_validator import preload_clip_validator
 from .pipeline import ImageNotRecognizedError, farmai_assistant
 from .schemas import AskRequest, AskResponse
@@ -135,6 +136,24 @@ async def ask_audio(
             k=k,
         )
         return _format_response(result)
+    except AudioTranscriptionError as exc:
+        logging.exception("Audio transcription failed")
+        return JSONResponse(
+            status_code=422,
+            content={
+                "error": "audio_not_recognized",
+                "error_code": 422,
+                "message_fr": (
+                    "L'audio n'a pas pu être lu ou transcrit. "
+                    "Veuillez réessayer avec un enregistrement clair."
+                ),
+                "message_en": (
+                    "The audio could not be read or transcribed. "
+                    "Please try again with a clear recording."
+                ),
+                "detail": str(exc),
+            },
+        )
     finally:
         temp_path.unlink(missing_ok=True)
 

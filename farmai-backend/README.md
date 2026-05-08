@@ -138,3 +138,19 @@ curl -X POST http://127.0.0.1:8000/ask/text \
 Le log `Killed` pendant `Loading checkpoint shards` indique un manque de RAM au chargement de Qwen. Sur CPU gratuit ou petit plan Railway/Render, utilise `USE_LLM=false`.
 
 Pour un MVP stable, le frontend devrait aussi envoyer `return_audio=false`, car MMS-TTS et MMS-ASR sont lourds.
+
+## Appel audio depuis le frontend
+
+L'endpoint attend un multipart avec le champ exact `audio` :
+
+```bash
+curl -X POST "https://acia-production.up.railway.app/ask/audio" \
+  -F "audio=@audio.m4a" \
+  -F "target_lang=fr" \
+  -F "return_audio=true" \
+  -F "k=2"
+```
+
+Dans une app mobile, ne force pas manuellement le header `Content-Type: multipart/form-data` si tu utilises `FormData`. Laisse Axios/fetch ajouter le `boundary`, sinon le serveur peut recevoir un multipart invalide.
+
+Le container installe `ffmpeg` pour lire les fichiers `m4a`, `mp3`, `opus` et `wav`.

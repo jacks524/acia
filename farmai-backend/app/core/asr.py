@@ -8,6 +8,10 @@ _asr_processor = None
 _asr_model = None
 
 
+class AudioTranscriptionError(RuntimeError):
+    pass
+
+
 def _get_asr():
     global _asr_processor, _asr_model
     if _asr_processor is None or _asr_model is None:
@@ -25,12 +29,22 @@ def transcribe_audio(audio_path: str, lang: str = "ha") -> str:
     processor.tokenizer.set_target_lang(mms_lang)
     model.load_adapter(mms_lang)
 
-    waveform, sr = torchaudio.load(audio_path)
+    try:
+        waveform, sr = torchaudio.load(audio_path)
+    except Exception as exc:
+        raise AudioTranscriptionError(
+            "Impossible de lire ce fichier audio. Utilisez wav, opus, mp3 ou m4a "
+            "avec ffmpeg disponible dans le container."
+        ) from exc
+
+    if waveform.ndim == 2 and waveform.shape[0] > 1:
+        waveform = waveform.mean(dim=0, keepdim=True)
+
     if sr != 16000:
         waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
 
     inputs = processor(
-        waveform.squeeze(),
+        waveform.squeeze(0),
         sampling_rate=16000,
         return_tensors="pt",
     ).to(DEVICE)
