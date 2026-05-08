@@ -9,5 +9,11 @@ services:
         value: cpu
       - key: USE_LLM
         value: "false"
+      - key: USE_CLIP_VALIDATOR
+        value: "true"
+      - key: CONFIDENCE_THRESHOLD
+        value: "0.65"
+      - key: ENTROPY_THRESHOLD
+        value: "0.55"
       - key: CORS_ORIGINS
         value: "*"

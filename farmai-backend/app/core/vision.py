@@ -4,7 +4,12 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 
-from ..config import DISEASE_CLASSES, TFLITE_MODEL_PATH
+from ..config import (
+    CONFIDENCE_THRESHOLD,
+    DISEASE_CLASSES,
+    ENTROPY_THRESHOLD,
+    TFLITE_MODEL_PATH,
+)
 
 if not TFLITE_MODEL_PATH.exists():
     raise FileNotFoundError(f"Modèle TFLite introuvable : {TFLITE_MODEL_PATH}")
@@ -17,9 +22,37 @@ output_details = interpreter.get_output_details()
 print("Modele TFLite pret")
 
 
-def detect_disease_from_image(image_path: str | Path, debug: bool = False) -> tuple[str, float]:
+def normalized_entropy(probs: np.ndarray | list[float]) -> float:
+    probs = np.asarray(probs, dtype=np.float32)
+    probs = np.clip(probs, 1e-8, 1.0)
+    probs = probs / probs.sum()
+    entropy = -float(np.sum(probs * np.log(probs)))
+    return entropy / float(np.log(len(probs)))
+
+
+def get_image_reliability_metrics(probs: np.ndarray | list[float]) -> dict[str, float]:
+    probs = np.asarray(probs, dtype=np.float32)
+    return {
+        "max_confidence": float(np.max(probs)),
+        "entropy": normalized_entropy(probs),
+    }
+
+
+def is_valid_leaf_image(probs: np.ndarray | list[float]) -> bool:
+    metrics = get_image_reliability_metrics(probs)
+    return (
+        metrics["max_confidence"] >= CONFIDENCE_THRESHOLD
+        and metrics["entropy"] <= ENTROPY_THRESHOLD
+    )
+
+
+def detect_disease_from_image(
+    image_path: str | Path,
+    debug: bool = False,
+) -> tuple[str, float, list[float]]:
     """
-    Charge une image, la prétraite, et retourne (classe_prédite, confiance).
+    Charge une image, la prétraite, et retourne
+    (classe_prédite, confiance, probabilités complètes).
     Gère les modèles TFLite float et quantifiés.
     """
     img = Image.open(image_path).convert("RGB")
@@ -57,4 +90,4 @@ def detect_disease_from_image(image_path: str | Path, debug: bool = False) -> tu
 
     pred_idx = int(np.argmax(probs))
     confidence = float(probs[pred_idx])
-    return DISEASE_CLASSES[pred_idx], confidence
+    return DISEASE_CLASSES[pred_idx], confidence, probs.astype(float).tolist()

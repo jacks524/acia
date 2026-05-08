@@ -18,9 +18,18 @@ ENCODER_NAME = os.getenv(
 )
 LLM_NAME = os.getenv("LLM_NAME", "Qwen/Qwen2.5-3B-Instruct")
 ASR_MODEL_NAME = os.getenv("ASR_MODEL_NAME", "facebook/mms-1b-all")
+CLIP_MODEL_NAME = os.getenv("CLIP_MODEL_NAME", "openai/clip-vit-base-patch32")
 
 DEVICE = os.getenv("DEVICE", "cpu")
 USE_LLM = os.getenv("USE_LLM", "false").lower() in {"1", "true", "yes", "on"}
+USE_CLIP_VALIDATOR = os.getenv("USE_CLIP_VALIDATOR", "true").lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
+CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.65"))
+ENTROPY_THRESHOLD = float(os.getenv("ENTROPY_THRESHOLD", "0.55"))
 
 CORS_ORIGINS = [
     origin.strip()

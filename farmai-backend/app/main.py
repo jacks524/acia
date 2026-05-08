@@ -1,15 +1,20 @@
 from pathlib import Path
+import logging
 import shutil
 from typing import Literal
 import uuid
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from .config import AUDIO_OUTPUT_DIR, CORS_ORIGINS
-from .pipeline import farmai_assistant
+from .core.clip_validator import preload_clip_validator
+from .pipeline import ImageNotRecognizedError, farmai_assistant
 from .schemas import AskRequest, AskResponse
+
+logging.basicConfig(level=logging.INFO)
 
 tags_metadata = [
     {
@@ -48,6 +53,11 @@ app.mount("/audio", StaticFiles(directory=str(AUDIO_OUTPUT_DIR)), name="audio")
 
 UPLOAD_DIR = Path("/tmp/farmai_uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
+
+
+@app.on_event("startup")
+def startup_event():
+    preload_clip_validator()
 
 
 @app.get("/", tags=["system"])
@@ -99,6 +109,8 @@ async def ask_image(
             k=k,
         )
         return _format_response(result)
+    except ImageNotRecognizedError as exc:
+        return JSONResponse(status_code=422, content=exc.payload)
     finally:
         temp_path.unlink(missing_ok=True)
 
