@@ -1,3 +1,8 @@
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+
 import torch
 import torchaudio
 from transformers import AutoProcessor, Wav2Vec2ForCTC
@@ -10,6 +15,51 @@ _asr_model = None
 
 class AudioTranscriptionError(RuntimeError):
     pass
+
+
+def _load_audio(audio_path: str):
+    try:
+        return torchaudio.load(audio_path)
+    except Exception as first_exc:
+        ffmpeg = shutil.which("ffmpeg")
+        if not ffmpeg:
+            raise AudioTranscriptionError(
+                "Impossible de lire ce fichier audio et ffmpeg est introuvable "
+                "dans le container."
+            ) from first_exc
+
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
+                wav_path = Path(tmp.name)
+
+            subprocess.run(
+                [
+                    ffmpeg,
+                    "-y",
+                    "-i",
+                    str(audio_path),
+                    "-vn",
+                    "-ac",
+                    "1",
+                    "-ar",
+                    "16000",
+                    "-f",
+                    "wav",
+                    str(wav_path),
+                ],
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE,
+            )
+            return torchaudio.load(str(wav_path))
+        except Exception as second_exc:
+            raise AudioTranscriptionError(
+                "Impossible de lire ce fichier audio. Formats recommandés : "
+                "wav, opus, mp3 ou m4a encodé AAC."
+            ) from second_exc
+        finally:
+            if "wav_path" in locals():
+                wav_path.unlink(missing_ok=True)
 
 
 def _get_asr():
@@ -29,13 +79,7 @@ def transcribe_audio(audio_path: str, lang: str = "ha") -> str:
     processor.tokenizer.set_target_lang(mms_lang)
     model.load_adapter(mms_lang)
 
-    try:
-        waveform, sr = torchaudio.load(audio_path)
-    except Exception as exc:
-        raise AudioTranscriptionError(
-            "Impossible de lire ce fichier audio. Utilisez wav, opus, mp3 ou m4a "
-            "avec ffmpeg disponible dans le container."
-        ) from exc
+    waveform, sr = _load_audio(audio_path)
 
     if waveform.ndim == 2 and waveform.shape[0] > 1:
         waveform = waveform.mean(dim=0, keepdim=True)
