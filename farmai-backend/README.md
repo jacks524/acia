@@ -154,3 +154,15 @@ curl -X POST "https://acia-production.up.railway.app/ask/audio" \
 Dans une app mobile, ne force pas manuellement le header `Content-Type: multipart/form-data` si tu utilises `FormData`. Laisse Axios/fetch ajouter le `boundary`, sinon le serveur peut recevoir un multipart invalide.
 
 Le container installe `ffmpeg` pour lire les fichiers `m4a`, `mp3`, `opus` et `wav`.
+
+## Qualité des réponses texte
+
+Quand `USE_LLM=false`, le backend utilise une réponse retrieval-only pour rester léger sur Railway/Render CPU. Une couche d'intention reformule maintenant les réponses pour éviter les diagnostics abusifs :
+
+- définition : explique la maladie sans dire que la plante de l'utilisateur est malade
+- pluie : donne des conseils de prévention liés à l'humidité
+- entretien : donne des conseils généraux de soin des tomates
+- symptômes : propose une hypothèse prudente et demande une photo claire pour confirmer
+- traitement : donne des actions seulement si la maladie est confirmée
+
+Cela s'applique aux 4 langues supportées : `fr`, `en`, `ha`, `ff`.

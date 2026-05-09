@@ -1,4 +1,5 @@
 from ..config import LANG_LABELS, USE_LLM
+from .intent import detect_question_intent, format_retrieval_answer
 from .retrieval import retrieve
 
 
@@ -9,8 +10,14 @@ def generate_response_retrieval_only(
     debug: bool = False,
 ) -> dict:
     lang_label = LANG_LABELS.get(target_lang, "Français")
+    original_question = question
+    intent = detect_question_intent(question)
+    retrieval_lang = target_lang
+    if intent in {"care", "rain"}:
+        question = _expand_general_tomato_question(question, target_lang, intent)
+
     n_candidates = max(k, 10)
-    retrieved = retrieve(question, lang=target_lang, k=n_candidates)
+    retrieved = retrieve(question, lang=retrieval_lang, k=n_candidates)
 
     if not retrieved:
         return {
@@ -38,14 +45,14 @@ def generate_response_retrieval_only(
                 f"matches={matches}] {chunk['title']}"
             )
 
-    _best_boosted, _best_score, best_chunk, _matches = rescored[0]
-    answer = best_chunk["text"]
-    title = best_chunk["title"]
-    if answer.startswith(title):
-        answer = answer[len(title) :].lstrip(". ").strip()
+    _best_boosted, _best_score, best_chunk, _matches = _select_best_candidate(
+        intent,
+        rescored,
+    )
+    answer = format_retrieval_answer(original_question, best_chunk, target_lang)
 
     return {
-        "question": question,
+        "question": original_question,
         "target_lang": target_lang,
         "answer": answer,
         "sources": [
@@ -53,6 +60,35 @@ def generate_response_retrieval_only(
             for _boosted, score, chunk, _common in rescored[:4]
         ],
     }
+
+
+def _expand_general_tomato_question(question: str, target_lang: str, intent: str) -> str:
+    if intent == "care":
+        additions = {
+            "fr": " plante saine entretien arrosage compost mauvaises herbes espacement",
+            "en": " healthy plant care watering compost weeds spacing",
+            "ha": " healthy plant shuka lafiya shayarwa tsaftace gona",
+            "ff": " healthy plant haako selli ndiyam toppitorde",
+        }
+        return question + additions.get(target_lang, additions["fr"])
+
+    additions = {
+        "fr": " pluie humidité saison des pluies arrosage feuilles prévention mildiou",
+        "en": " rain humidity rainy season watering leaves prevention late blight",
+        "ha": " damina ruwa danshi ganye kariya mildiou",
+        "ff": " ndungu ndiyam heccere haako haɗde caɗeele",
+    }
+    return question + additions.get(target_lang, additions["fr"])
+
+
+def _select_best_candidate(intent: str, rescored: list[tuple[float, float, dict, int]]):
+    if intent == "care":
+        for candidate in rescored:
+            title = candidate[2]["title"].lower()
+            if "healthy" in title or "plante saine" in title or "shuka mai lafiya" in title:
+                return candidate
+
+    return rescored[0]
 
 
 def generate_response_hybrid(question: str, target_lang: str = "ha", k: int = 2) -> dict:
