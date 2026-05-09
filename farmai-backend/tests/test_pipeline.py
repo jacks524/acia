@@ -13,11 +13,11 @@ def test_text_pipeline_with_mocks(monkeypatch):
     monkeypatch.setattr("app.pipeline.generate_response_hybrid", fake_generate_response_hybrid)
 
     result = farmai_assistant(
-        text_question="Que faire ?",
+        text_question="Comment traiter le mildiou ?",
         target_lang="fr",
         return_audio=False,
     )
 
-    assert result["question"] == "Que faire ?"
+    assert result["question"] == "Comment traiter le mildiou ?"
     assert result["answer_text"] == "Conseil test"
     assert result["sources"][0]["title"] == "Source test"

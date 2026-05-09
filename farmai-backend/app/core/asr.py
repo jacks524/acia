@@ -8,6 +8,7 @@ import torchaudio
 from transformers import AutoProcessor, Wav2Vec2ForCTC
 
 from ..config import ASR_LANG_CODES, ASR_MODEL_NAME, DEVICE
+from .intent import is_audio_silent
 
 _asr_processor = None
 _asr_model = None
@@ -73,6 +74,9 @@ def _get_asr():
 
 
 def transcribe_audio(audio_path: str, lang: str = "ha") -> str:
+    if is_audio_silent(audio_path):
+        return ""
+
     processor, model = _get_asr()
     mms_lang = ASR_LANG_CODES.get(lang, lang)
 

@@ -1,15 +1,15 @@
 import logging
+import math
 
-from .config import CLIP_ALWAYS_VALIDATE, DISEASE_KEYWORDS, USE_CLIP_VALIDATOR
-from .core.asr import transcribe_audio
-from .core.clip_validator import is_plant_leaf
-from .core.hybrid import generate_response_hybrid
-from .core.tts import synthesize_audio
-from .core.vision import (
-    detect_disease_from_image,
-    get_image_reliability_metrics,
-    is_valid_leaf_image,
+from .config import (
+    CLIP_ALWAYS_VALIDATE,
+    CONFIDENCE_THRESHOLD,
+    DISEASE_KEYWORDS,
+    ENTROPY_THRESHOLD,
+    USE_CLIP_VALIDATOR,
 )
+from .core.intent import INTENT_DISEASE_QUERY, classify_intent
+from .core.responses import build_response
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +39,55 @@ class ImageNotRecognizedError(ValueError):
             "entropy": entropy,
         }
         super().__init__(self.payload["message_en"])
+
+
+def transcribe_audio(audio_path: str, lang: str = "ha") -> str:
+    from .core.asr import transcribe_audio as _transcribe_audio
+
+    return _transcribe_audio(audio_path, lang=lang)
+
+
+def is_plant_leaf(image_path: str) -> bool:
+    from .core.clip_validator import is_plant_leaf as _is_plant_leaf
+
+    return _is_plant_leaf(image_path)
+
+
+def generate_response_hybrid(question: str, target_lang: str = "fr", k: int = 2) -> dict:
+    from .core.hybrid import generate_response_hybrid as _generate_response_hybrid
+
+    return _generate_response_hybrid(question, target_lang=target_lang, k=k)
+
+
+def synthesize_audio(text: str, lang: str = "fr") -> str:
+    from .core.tts import synthesize_audio as _synthesize_audio
+
+    return _synthesize_audio(text, lang=lang)
+
+
+def detect_disease_from_image(image_path: str):
+    from .core.vision import detect_disease_from_image as _detect_disease_from_image
+
+    return _detect_disease_from_image(image_path)
+
+
+def get_image_reliability_metrics(probs):
+    values = [max(float(prob), 1e-8) for prob in probs]
+    total = sum(values) or 1.0
+    values = [prob / total for prob in values]
+    entropy = -sum(prob * math.log(prob) for prob in values)
+    return {
+        "max_confidence": max(values),
+        "entropy": entropy / math.log(len(values)),
+    }
+
+
+def is_valid_leaf_image(probs) -> bool:
+    metrics = get_image_reliability_metrics(probs)
+    return (
+        metrics["max_confidence"] >= CONFIDENCE_THRESHOLD
+        and metrics["entropy"] <= ENTROPY_THRESHOLD
+    )
 
 
 def farmai_assistant(
@@ -100,9 +149,17 @@ def farmai_assistant(
 
     output["question"] = question
 
+    intent = classify_intent(question, target_lang)
+    if intent != INTENT_DISEASE_QUERY:
+        output = build_response(intent, target_lang, original_question=question)
+        if return_audio and output["answer_text"]:
+            output["audio_path"] = synthesize_audio(output["answer_text"], lang=target_lang)
+        return output
+
     rag_result = generate_response_hybrid(question, target_lang=target_lang, k=k)
     output["answer_text"] = rag_result["answer"]
     output["sources"] = rag_result["sources"]
+    output["intent"] = INTENT_DISEASE_QUERY
 
     if return_audio and rag_result["answer"]:
         output["audio_path"] = synthesize_audio(rag_result["answer"], lang=target_lang)

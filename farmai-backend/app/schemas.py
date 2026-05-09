@@ -23,3 +23,4 @@ class AskResponse(BaseModel):
     answer_text: str
     sources: list[Source]
     audio_url: Optional[str] = None
+    intent: Optional[str] = None
